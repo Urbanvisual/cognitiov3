@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Cognitio/Inventarios</title>
+        <meta charset="UTF-8">
+
+    </head>
+   <body>
+<header th:replace="layout/plantilla :: header"></header>
+<h1 style="margin: -21px 0px -45px 35%;">Listado de Inventarios</h1>
+<a th:href="@{/}" style="padding: 84px;  font-size: 20px; text-decoration: none;">Index ></a>
+      
+<div class="menu" style="margin-top: 10px; padding: 84px">
+            <a th:href="@{/lisPersonas}" class="ver" style=" font-size: 20px;  text-decoration: none;">Citas  ></a><br> <br>
+            <a th:href="@{/lisClases}" class="ver" style=" font-size: 20px; text-decoration: none;">Clases  ></a> <br> <br>
+            <a th:href="@{/lisPersonas}" class="ver" style=" font-size: 20px; text-decoration: none; ">Usuarios  ></a> <br><br>
+            <a th:href="@{/lisInventarios}" class="ver" style=" font-size: 20px;">Inventarios ></a><br> <br>
+        </div>
+<div th:if="${inventarios !=null and !inventarios.empty}">
+            
+            <table border="1" style="height: 193px; width: 874px; margin-left: 35%; margin-bottom: 24px; margin-top: -292px;">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Fechaultimo</th><!-- comment -->
+                    <th>revisor</th><!-- comment -->
+                    <th>estado</th>
+                    <th>cantidad</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                <tr th:each="inventario : ${inventarios}">
+                    <td th:text="${inventario.tipo}">Mostrar Tipo</td>
+                    <td th:text="${inventario.fechaultimo}">Mostrar Fechaultimo</td><!-- comment -->
+                    <td th:text="${inventario.revisor}">Mostrar revisor</td><!-- comment -->
+                    <td th:text="${inventario.estado}">Mostrar estado</td>
+                    <td th:text="${inventario.cantidad}">Mostrar cantidad</td>
+                    <td style="text-align: center;"><a th:href="@{/editarInventario/} + ${inventario.idinventario}" th:text="Editar"/></td>
+                    <td style="text-align: center;"><a th:href="@{/eliminarInventario/} + ${inventario.idinventario}" th:text="Eliminar"/></td>
+                </tr>
+            </table>
+        </div>
+ <a th:href="@{/agregarInventario}"   style="margin-left: 70%; font-size: 20px; padding: 24px;">Nuevo Inventario</a>
+        <div th:if="${inventarios==null or inventarios.empty}">
+            la lista de personas esta vacia
+        </div>
+         
+         <div>
+             <img src="https://raw.githubusercontent.com/Estebanlozano/Cognitio/920556ce7075d7bcde47253711c937d813a404ee/Cognitio/cognitio/src/main/resources/templates/img/gimcar1.jpg"
+                 style="width: 333px; height: 198px; padding-left: 20px;}" >
+         </div>
+
+        <footer  th:replace="layout/plantilla :: footer"></footer>
+    </body>
+</html>

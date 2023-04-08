@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      styel>
+    <head>
+        <title>Plantilla</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body style="margin: 0; margin-bottom: 40px; color: white;">
+        <header th:fragment="header">
+            
+            <div style="background-color: green; width: 120%; height: 148px; margin-left: -20px;" >
+                <img src="https://github.com/Urbanvisual/Cognitio/blob/master/co.png?raw=true" style="margin: 19px 0px 4px 89px; width:150px; height:100px;" alt="alt"/>
+            </div>
+            
+
+            <h1 style="margin: -90px 50px 96px 80%; color: white">COGNITIO</h1>
+        </header>
+
+        <footer th:fragment="footer" style="background-color: #a7cfa1;  position: unset;  bottom: 0;  width: 120%;  height: 100px; margin-left: -20px;   ">
+            <p style="margin-left: 35% "> Derechos Reservados <a href="/" target="_blank">Cognitio</p>
+        </footer>
+    </body>
+</html>

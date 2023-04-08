@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Cognitio/Inventario</title>        
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+        <h2 style="margin-left: 42%;">Nuevo Inventario</h2>
+        
+        <a th:href="@{/lisInventarios}" style="margin-left: 11%; color: green;">Regresar</a>
+        
+        
+        <div style="    border: solid green; width: 176px; height: 282px; margin-left: 40%; padding: 20px; border-radius:5px 20px 5px 5px; background-color: #eaffea;">
+                   
+        <form th:action="@{/guardarInventario}" method="post" th:object="${inventario}">
+            
+            <input type="hidden" name="idinventario" th:field="*{idinventario}"/>
+            <br/>
+             
+            <label for="tipo">Tipo:</label>            
+            <input type="text" name="tipo" th:field="*{tipo}"/>
+            <spam th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">Error Tipo </spam>
+            <br/>
+            
+            <label for="fechaultimo">Fecha Ultimo Mantenimiento:</label>
+            <input type="text" name="fechaultimo" th:field="*{fechaultimo}"/>
+            <span th:if="${#fields.hasErrors('fechaultimo')}" th:errors="*{fechaultimo}">Error fecha ultimo mantenimiento </span>
+            <br/>
+            
+            <label for="revisor">Nombre del Revisor:</label>
+            <input type="text" name="revisor" th:field="*{revisor}"/>
+            <span th:if="${#fields.hasErrors('revisor')}" th:errors="*{revisor}">Error nombre del revisor </span>
+            <br/>
+            
+            <label for="estado">Estado:</label>
+            <input type="text" name="estado" th:field="*{estado}"/>
+            <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}">Error estado </span>
+            <br/>
+            
+            <label for="cantidad">Cantidad:</label>
+            <input type="text" name="cantidad" th:field="*{cantidad}"/>
+            <span th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}">Error cantidad </span>
+            <br/>
+          
+            <input type="submit" name="guardarInventario" value="Guardar" style="margin: 28px 0; background: #46ff7b; border: none; height: 26px; width: 171px; border-radius: 3px 15px 3px 3px;"/>
+        </form>
+        </div>
+       
+        <footer  th:replace="layout/plantilla :: footer"></footer>
+    </body>
+</html>

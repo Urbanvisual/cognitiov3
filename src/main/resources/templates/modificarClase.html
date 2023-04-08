@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Cognitio/Clase</title>        
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+        <h2 style="margin-left: 42%;">Nueva Clase</h2>
+        
+        <a th:href="@{/lisClases}" style="margin-left: 11%; color: green;">Regresar</a>
+        
+        
+        <div style="    border: solid green; width: 176px; height: 282px; margin-left: 40%; padding: 20px; border-radius:5px 20px 5px 5px; background-color: #eaffea;">
+            
+        <form th:action="@{/guardarClase}" method="post" th:object="${clase}">
+            
+            <input type="hidden" name="idclase" th:field="*{idclase}"/>
+            <br/>
+             
+            <label for="nomclase">Detalle de la Clase:</label>            
+            <input type="text" name="nomclase" th:field="*{nomclase}"/>
+            <spam th:if="${#fields.hasErrors('nomclase')}" th:errors="*{nomclase}">Error Nombre </spam>
+            <br/>
+            
+            <label for="fechareserva">Fecha Reserva Clase:</label>
+            <input type="text" name="fechareserva" th:field="*{fechareserva}"/>
+            <span th:if="${#fields.hasErrors('fechareserva')}" th:errors="*{fechareserva}">fechareservaError </span>
+            <br/>
+            <label for="nominstructor">Nombre del Instructor:</label>
+            <input type="text" name="nominstructor" th:field="*{nominstructor}"/>
+            <span th:if="${#fields.hasErrors('nominstructor')}" th:errors="*{nominstructor}">Error nom_instructor </span>
+            <br/>
+          
+            <input type="submit" name="agregarClase" value="Guardar" style="margin: 28px 0; background: #46ff7b; border: none; height: 26px; width: 171px; border-radius: 3px 15px 3px 3px;"/>
+        </form>
+        </div>
+       
+        <footer  th:replace="layout/plantilla :: footer"></footer>
+    </body>
+</html>
